@@ -32,51 +32,6 @@ This repository accompanies the paper *"Drift-Aware MLOps for Fake News Detectio
 ![Pipeline Architecture](results/architecture_diagram.png)
 
 ---
-
-## Project Structure
-
-```
-fake-news-mlops/
-├── api/                        # FastAPI service
-│   ├── main.py                 # App entry point + lifespan
-│   ├── inference.py            # ModelRegistry (lazy-load 4 models)
-│   ├── metrics.py              # Prometheus counters/histograms/gauges
-│   ├── models.py               # Pydantic request/response schemas
-│   └── routers/
-│       ├── predict.py          # POST /predict
-│       ├── health.py           # GET /health, /ready, GET /models
-│       └── admin.py            # GET /admin/drift/status, POST /admin/retrain
-├── ml/
-│   ├── model.py                # OptimalFNDModel transformer architecture
-│   ├── dataset.py              # FakeNewsDataset, data loaders
-│   ├── train.py                # Training loop with MLflow logging
-│   ├── drift_detector.py       # TF-IDF + Kolmogorov-Smirnov drift detection
-│   └── retraining/
-│       ├── setup_a.py          # Static model (no retraining)
-│       ├── setup_b.py          # Periodic retraining (every N windows)
-│       └── setup_c.py          # Drift-triggered retraining
-├── experiments/
-│   ├── run_comparison.py       # Master script: A vs B vs C → CSV + MLflow
-│   ├── simulate_drift.py       # 8-window ISOT→LIAR distribution mixing
-│   └── plot_results.py         # Generate paper figures from results CSV
-├── monitoring/
-│   ├── prometheus.yml          # Scrape config
-│   └── grafana/                # Dashboard provisioning JSON
-├── scripts/
-│   ├── download_data.py        # Dataset download helper
-│   ├── train_bert_models.py    # Train all 4 model variants, save .pt files
-│   └── seed_mlflow.py          # Import notebook results into MLflow
-├── tests/
-│   ├── conftest.py             # tiny_model + mock_tokenizer fixtures
-│   ├── test_api.py             # FastAPI endpoint tests
-│   ├── test_drift.py           # DriftDetector unit tests
-│   └── test_model.py           # Forward pass smoke tests
-├── results/                    # Generated figures + CSVs (gitignored binaries)
-├── docker-compose.yml
-├── Dockerfile
-└── requirements.txt
-```
-
 ---
 
 ## Quick Start
@@ -118,96 +73,6 @@ curl -X POST http://localhost:8000/predict \
 }
 ```
 
-### 3. Check API health
-
-```bash
-curl http://localhost:8000/health
-curl http://localhost:8000/ready
-curl http://localhost:8000/models
-```
-
-### 4. View live drift status
-
-```bash
-curl http://localhost:8000/admin/drift/status
-```
-
----
-
-## Running Experiments
-
-### Download data
-
-```bash
-python scripts/download_data.py
-```
-
-Place `Fake.csv` and `True.csv` (ISOT) in `data/isot/` manually from Kaggle.
-
-### Train model weights
-
-```bash
-python scripts/train_bert_models.py
-```
-
-Trains all 4 variants (`bert`, `roberta`, `deberta`, `distilbert`) and saves `.pt` files to `models/`. Requires ISOT data. Takes ~30 min on CPU.
-
-### Run the 3-setup comparison
-
-```bash
-python experiments/run_comparison.py
-```
-
-Simulates 8 data windows (ISOT→LIAR distribution shift) and runs Setup A, B, C. Saves results to `results/comparison_results.csv` and logs all runs to MLflow.
-
-### Generate paper figures
-
-```bash
-python experiments/plot_results.py
-```
-
-Outputs `fig1_accuracy_over_windows.png`, `fig2_drift_vs_accuracy.png`, `fig3_retraining_efficiency.png` to `results/`.
-
-### Seed MLflow with baseline results
-
-```bash
-python scripts/seed_mlflow.py
-```
-
-Imports BERT baseline results from `results/all_run_results.json` into MLflow `BERT_Baselines_Optimal` experiment.
-
----
-
-## Model Architecture
-
-The **OptimalFNDModel** is a custom lightweight transformer (7.28M parameters) — it does **not** use pre-trained HuggingFace weights. Only the `BertTokenizer` is borrowed for tokenization.
-
-```
-Input Text
-    ↓
-BertTokenizer (vocab_size=30,522)
-    ↓
-TokenEmbedding + PositionalEncoding
-    ↓
-N × FNDTransformerLayer
-    ├── EnhancedMultiHeadAttention
-    └── LightweightFFN
-    ↓
-CLS pooling (or mean pooling)
-    ↓
-Linear → Softmax → {fake, real}
-```
-
-**Four variants** share the same class with different configs:
-
-| Variant | d_model | Heads | Layers | d_ff |
-|---------|--------:|------:|-------:|-----:|
-| bert | 192 | 6 | 4 | 512 |
-| roberta | 128 | 4 | 3 | 384 |
-| deberta | 128 | 4 | 3 | 384 |
-| distilbert | 128 | 4 | 3 | 384 |
-
----
 
 ## Drift Detection
 
@@ -246,17 +111,6 @@ For each new window:
 
 ---
 
-## Running Tests
-
-```bash
-pip install -r requirements-dev.txt
-pytest
-```
-
-Tests use a tiny model (d_model=16) so they run in seconds without GPU.
-
----
-
 ## CI/CD
 
 **CI** runs on every push and pull request:
@@ -278,19 +132,9 @@ Tests use a tiny model (d_model=16) so they run in seconds without GPU.
 | LIAR | ~12,800 | 6-class → binarized | [UCSB](https://www.cs.ucsb.edu/~william/data/liar_dataset.zip) |
 
 LIAR binarization: `pants-fire / false / barely-true → fake`, `half-true / mostly-true / true → real`
-
----
-
-## References
-
-- Rout, J. K., et al. (2025). *Fake News Detection Using Transformer-Based Models*. Journal of Cybersecurity and Privacy.
-- Ahmed, H., et al. (2017). *Detection of Online Fake News Using N-Gram Analysis and Machine Learning Techniques*. INISTA.
-- Wang, W. Y. (2017). *"Liar, Liar Pants on Fire": A New Benchmark Dataset for Fake News Detection*. ACL.
-
 ---
 
 ## Author
 
 **Umaima Hashmi**
 Fake News Detection MLOps Pipeline — Track-II Research Paper, 2026
->>>>>>> 2f8e91e (Update README with accuracy metrics and add architecture diagram)
