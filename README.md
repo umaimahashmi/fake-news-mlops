@@ -130,8 +130,6 @@ For each new window:
 |---------|--------:|---------|--------|
 | ISOT | ~44,000 | fake / real | [Kaggle](https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset) |
 | LIAR | ~12,800 | 6-class → binarized | [UCSB](https://www.cs.ucsb.edu/~william/data/liar_dataset.zip) |
-
-LIAR binarization: `pants-fire / false / barely-true → fake`, `half-true / mostly-true / true → real`
 ---
 
 ## Author
