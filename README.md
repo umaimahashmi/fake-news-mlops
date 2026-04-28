@@ -32,8 +32,6 @@ This repository accompanies the paper *"Drift-Aware MLOps for Fake News Detectio
 ![Pipeline Architecture](results/architecture_diagram.png)
 
 ---
----
-
 ## Quick Start
 
 ### Prerequisites
