@@ -20,9 +20,6 @@ This repository accompanies the paper *"Drift-Aware MLOps for Fake News Detectio
 | B | Periodic (every 2 windows) | 88.48% | 4 |
 | **C** | **Drift-triggered (KS test > 0.1)** | **86.81%** | **2** |
 
-<<<<<<< HEAD
-**Setup C maintains ~88% accuracy under distributional shift with 2× fewer retraining cycles than Setup B.**
-=======
 > Accuracy degrades from **98.5% → 57.8%** in Setup A by window 7 (severe drift).
 > Setup C recovers to **92.5%** at the drift event (window 5, KS = 0.120) with **half the retraining cost** of Setup B.
 
