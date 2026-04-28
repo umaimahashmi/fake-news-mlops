@@ -1,0 +1,17 @@
+Model,Dataset,Configuration,Test Accuracy,Test F1
+BERT,ISOT,baseline,0.9973,0.9973
+BERT,ISOT,no_positional_encoding,0.996,0.996
+BERT,ISOT,no_attention,0.4767,0.3078
+BERT,ISOT,no_feedforward,0.9973,0.9973
+BERT,ISOT,no_residual_connections,0.9973,0.9973
+BERT,ISOT,no_layer_normalization,0.9973,0.9973
+BERT,ISOT,no_dropout,0.9973,0.9973
+BERT,ISOT,no_cls_token,0.9973,0.9973
+BERT,LIAR,baseline,0.5965,0.5956
+BERT,LIAR,no_positional_encoding,0.5699,0.5696
+BERT,LIAR,no_attention,0.4767,0.3078
+BERT,LIAR,no_feedforward,0.5513,0.5403
+BERT,LIAR,no_residual_connections,0.5712,0.571
+BERT,LIAR,no_layer_normalization,0.5766,0.5739
+BERT,LIAR,no_dropout,0.5539,0.5538
+BERT,LIAR,no_cls_token,0.5832,0.5808

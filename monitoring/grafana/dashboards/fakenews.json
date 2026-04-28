@@ -1,0 +1,99 @@
+{
+  "title": "Fake News Detection - MLOps Dashboard",
+  "uid": "fakenews-mlops",
+  "schemaVersion": 38,
+  "version": 1,
+  "refresh": "15s",
+  "time": { "from": "now-1h", "to": "now" },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Prediction Rate (req/s)",
+      "type": "timeseries",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "targets": [{
+        "expr": "rate(fakenews_predictions_total[1m])",
+        "legendFormat": "{{model}} - {{label}}"
+      }]
+    },
+    {
+      "id": 2,
+      "title": "Fake News Ratio",
+      "type": "stat",
+      "gridPos": { "x": 12, "y": 0, "w": 6, "h": 8 },
+      "targets": [{
+        "expr": "sum(fakenews_predictions_total{label='fake'}) / sum(fakenews_predictions_total)",
+        "legendFormat": "Fake ratio"
+      }],
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "unit": "percentunit" }
+    },
+    {
+      "id": 3,
+      "title": "Active Models",
+      "type": "stat",
+      "gridPos": { "x": 18, "y": 0, "w": 6, "h": 8 },
+      "targets": [{ "expr": "fakenews_active_models", "legendFormat": "Models loaded" }]
+    },
+    {
+      "id": 4,
+      "title": "Inference Latency p95 (s)",
+      "type": "timeseries",
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
+      "targets": [{
+        "expr": "histogram_quantile(0.95, rate(fakenews_inference_duration_seconds_bucket[5m]))",
+        "legendFormat": "p95 {{model}}"
+      }, {
+        "expr": "histogram_quantile(0.50, rate(fakenews_inference_duration_seconds_bucket[5m]))",
+        "legendFormat": "p50 {{model}}"
+      }]
+    },
+    {
+      "id": 5,
+      "title": "Data Drift Score (KS statistic)",
+      "type": "timeseries",
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+      "targets": [{ "expr": "fakenews_drift_score", "legendFormat": "Drift score" }],
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "steps": [
+              { "value": 0, "color": "green" },
+              { "value": 0.1, "color": "red" }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 6,
+      "title": "Retraining Events",
+      "type": "stat",
+      "gridPos": { "x": 0, "y": 16, "w": 6, "h": 6 },
+      "targets": [{
+        "expr": "sum(fakenews_retraining_total)",
+        "legendFormat": "Total retrains"
+      }]
+    },
+    {
+      "id": 7,
+      "title": "Error Rate (req/s)",
+      "type": "timeseries",
+      "gridPos": { "x": 6, "y": 16, "w": 12, "h": 6 },
+      "targets": [{
+        "expr": "rate(fakenews_request_errors_total[5m])",
+        "legendFormat": "{{model}} - {{error_type}}"
+      }]
+    },
+    {
+      "id": 8,
+      "title": "Model Accuracy by Setup",
+      "type": "bargauge",
+      "gridPos": { "x": 18, "y": 16, "w": 6, "h": 6 },
+      "targets": [{
+        "expr": "fakenews_model_accuracy",
+        "legendFormat": "{{setup}} / {{dataset}}"
+      }],
+      "options": { "orientation": "horizontal" }
+    }
+  ]
+}

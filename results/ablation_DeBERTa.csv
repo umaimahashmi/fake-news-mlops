@@ -1,0 +1,15 @@
+Model,Dataset,Configuration,Test Accuracy,Test F1
+DeBERTa,ISOT,baseline,0.9973,0.9973
+DeBERTa,ISOT,no_attention,0.4767,0.3078
+DeBERTa,ISOT,no_relative_position,0.996,0.996
+DeBERTa,ISOT,no_feedforward,0.9973,0.9973
+DeBERTa,ISOT,no_residual_connections,0.9973,0.9973
+DeBERTa,ISOT,no_layer_norm,0.9973,0.9973
+DeBERTa,ISOT,no_dropout,0.9973,0.9973
+DeBERTa,LIAR,baseline,0.5965,0.5956
+DeBERTa,LIAR,no_attention,0.4767,0.3078
+DeBERTa,LIAR,no_relative_position,0.5699,0.5696
+DeBERTa,LIAR,no_feedforward,0.5513,0.5403
+DeBERTa,LIAR,no_residual_connections,0.5712,0.571
+DeBERTa,LIAR,no_layer_norm,0.5766,0.5739
+DeBERTa,LIAR,no_dropout,0.5539,0.5538

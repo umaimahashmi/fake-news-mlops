@@ -1,0 +1,3 @@
+Dataset,Test Acc,Test F1,Test Prec,Test Rec,Params
+ISOT,0.9973,0.9973,0.9974,0.9973,"7,281,346"
+LIAR,0.5526,0.5386,0.5717,0.5526,"7,281,346"

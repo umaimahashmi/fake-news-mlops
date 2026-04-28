@@ -1,0 +1,218 @@
+[
+  {
+    "setup": "A",
+    "window": 0,
+    "accuracy": 0.985,
+    "f1": 0.985,
+    "retrained": false,
+    "latency_ms": 1570.86
+  },
+  {
+    "setup": "A",
+    "window": 1,
+    "accuracy": 0.9645,
+    "f1": 0.9645,
+    "retrained": false,
+    "latency_ms": 1496.72
+  },
+  {
+    "setup": "A",
+    "window": 2,
+    "accuracy": 0.9685,
+    "f1": 0.9685,
+    "retrained": false,
+    "latency_ms": 1493.66
+  },
+  {
+    "setup": "A",
+    "window": 3,
+    "accuracy": 0.8335,
+    "f1": 0.8313,
+    "retrained": false,
+    "latency_ms": 1381.05
+  },
+  {
+    "setup": "A",
+    "window": 4,
+    "accuracy": 0.841,
+    "f1": 0.8389,
+    "retrained": false,
+    "latency_ms": 1717.43
+  },
+  {
+    "setup": "A",
+    "window": 5,
+    "accuracy": 0.72,
+    "f1": 0.7041,
+    "retrained": false,
+    "latency_ms": 1024.22
+  },
+  {
+    "setup": "A",
+    "window": 6,
+    "accuracy": 0.71,
+    "f1": 0.6957,
+    "retrained": false,
+    "latency_ms": 792.6
+  },
+  {
+    "setup": "A",
+    "window": 7,
+    "accuracy": 0.578,
+    "f1": 0.5308,
+    "retrained": false,
+    "latency_ms": 540.23
+  },
+  {
+    "setup": "B",
+    "window": 0,
+    "accuracy": 0.985,
+    "f1": 0.985,
+    "retrained": true,
+    "retrain_count": 1,
+    "latency_ms": 2046.56
+  },
+  {
+    "setup": "B",
+    "window": 1,
+    "accuracy": 0.9645,
+    "f1": 0.9645,
+    "retrained": false,
+    "retrain_count": 1,
+    "latency_ms": 1978.35
+  },
+  {
+    "setup": "B",
+    "window": 2,
+    "accuracy": 0.9865,
+    "f1": 0.9865,
+    "retrained": true,
+    "retrain_count": 2,
+    "latency_ms": 1855.19
+  },
+  {
+    "setup": "B",
+    "window": 3,
+    "accuracy": 0.8325,
+    "f1": 0.8301,
+    "retrained": false,
+    "retrain_count": 2,
+    "latency_ms": 1404.45
+  },
+  {
+    "setup": "B",
+    "window": 4,
+    "accuracy": 0.954,
+    "f1": 0.954,
+    "retrained": true,
+    "retrain_count": 3,
+    "latency_ms": 1468.42
+  },
+  {
+    "setup": "B",
+    "window": 5,
+    "accuracy": 0.7555,
+    "f1": 0.7551,
+    "retrained": false,
+    "retrain_count": 3,
+    "latency_ms": 1205.89
+  },
+  {
+    "setup": "B",
+    "window": 6,
+    "accuracy": 0.9315,
+    "f1": 0.9314,
+    "retrained": true,
+    "retrain_count": 4,
+    "latency_ms": 988.32
+  },
+  {
+    "setup": "B",
+    "window": 7,
+    "accuracy": 0.669,
+    "f1": 0.669,
+    "retrained": false,
+    "retrain_count": 4,
+    "latency_ms": 443.59
+  },
+  {
+    "setup": "C",
+    "window": 0,
+    "accuracy": 0.985,
+    "f1": 0.985,
+    "drift_score": 0.001,
+    "retrained": true,
+    "retrain_count": 1,
+    "latency_ms": 1742.07
+  },
+  {
+    "setup": "C",
+    "window": 1,
+    "accuracy": 0.9645,
+    "f1": 0.9645,
+    "drift_score": 0.0175,
+    "retrained": false,
+    "retrain_count": 1,
+    "latency_ms": 2587.78
+  },
+  {
+    "setup": "C",
+    "window": 2,
+    "accuracy": 0.9685,
+    "f1": 0.9685,
+    "drift_score": 0.0171,
+    "retrained": false,
+    "retrain_count": 1,
+    "latency_ms": 2028.41
+  },
+  {
+    "setup": "C",
+    "window": 3,
+    "accuracy": 0.8335,
+    "f1": 0.8313,
+    "drift_score": 0.0606,
+    "retrained": false,
+    "retrain_count": 1,
+    "latency_ms": 1735.18
+  },
+  {
+    "setup": "C",
+    "window": 4,
+    "accuracy": 0.841,
+    "f1": 0.8389,
+    "drift_score": 0.0597,
+    "retrained": false,
+    "retrain_count": 1,
+    "latency_ms": 1764.44
+  },
+  {
+    "setup": "C",
+    "window": 5,
+    "accuracy": 0.9245,
+    "f1": 0.9245,
+    "drift_score": 0.1202,
+    "retrained": true,
+    "retrain_count": 2,
+    "latency_ms": 2141.66
+  },
+  {
+    "setup": "C",
+    "window": 6,
+    "accuracy": 0.7605,
+    "f1": 0.7603,
+    "drift_score": 0.0118,
+    "retrained": false,
+    "retrain_count": 2,
+    "latency_ms": 2020.98
+  },
+  {
+    "setup": "C",
+    "window": 7,
+    "accuracy": 0.6725,
+    "f1": 0.6728,
+    "drift_score": 0.0641,
+    "retrained": false,
+    "retrain_count": 2,
+    "latency_ms": 784.7
+  }
+]

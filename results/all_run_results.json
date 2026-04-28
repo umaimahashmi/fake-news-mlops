@@ -1,0 +1,48 @@
+{
+  "ISOT": [
+    {
+      "test_acc": 0.9973,
+      "test_f1": 0.9973,
+      "test_prec": 0.9974,
+      "test_rec": 0.9973,
+      "val_acc": 1.0
+    },
+    {
+      "test_acc": 0.9973,
+      "test_f1": 0.9973,
+      "test_prec": 0.9974,
+      "test_rec": 0.9973,
+      "val_acc": 1.0
+    },
+    {
+      "test_acc": 0.9973,
+      "test_f1": 0.9973,
+      "test_prec": 0.9974,
+      "test_rec": 0.9973,
+      "val_acc": 0.9987
+    }
+  ],
+  "LIAR": [
+    {
+      "test_acc": 0.5526,
+      "test_f1": 0.5386,
+      "test_prec": 0.5717,
+      "test_rec": 0.5526,
+      "val_acc": 0.6187
+    },
+    {
+      "test_acc": 0.5739,
+      "test_f1": 0.5738,
+      "test_prec": 0.5767,
+      "test_rec": 0.5739,
+      "val_acc": 0.5973
+    },
+    {
+      "test_acc": 0.5686,
+      "test_f1": 0.567,
+      "test_prec": 0.5743,
+      "test_rec": 0.5686,
+      "val_acc": 0.6
+    }
+  ]
+}
